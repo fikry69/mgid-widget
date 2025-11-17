@@ -1,48 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MGID Widget</title>
-
-  <!-- MGID HEAD SCRIPT (loader) -->
-  <script src="https://jsc.mgid.com/site/1063027.js" async></script>
-
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #fafafa;
-    }
-    .mg-box {
-      width: 100%;
-      max-width: 700px;
-      margin: auto;
-      border: 1px solid #ddd;
-      padding: 10px;
-      background: #fff;
-      min-height: 200px;
-      box-sizing: border-box;
-    }
-  </style>
-</head>
-
-<body>
-  <h2>MGID Widget Test Page</h2>
-  <p>Jika MGID aktif, widget akan muncul di kotak di bawah ini:</p>
-
-  <div class="mg-box">
-    <!-- MGID WIDGET -->
-    <div data-type="_mgwidget" data-widget-id="1892356"></div>
-    <script>
-      (function(w,q){
-        w[q]=w[q]||[];
-        w[q].push(["_mgc.load"])
-      })(window,"_mgq");
-    </script>
-  </div>
-
-  <p>Jika kotak kosong, cek adblock / tunggu beberapa menit.</p>
-</body>
-</html>
+<div id="mg-debug" style="min-height:220px;border:1px dashed #ccc;padding:10px;">
+  <!-- MGID container -->
+  <div data-type="_mgwidget" data-widget-id="1892356"></div>
+</div>
+<script>
+  (function(w,q){
+    w[q]=w[q]||[];
+    w[q].push(["_mgc.load"]);
+    console.log("DEBUG: pushed _mgc.load to", q, " current queue:", w[q].slice(-5));
+    // show simple fallback after 3s
+    setTimeout(function(){
+      var el=document.getElementById('mg-debug');
+      if(el && el.innerText.trim().length===0){
+        el.style.border='2px solid #f00';
+        el.innerHTML += "<p style='color:#666'>DEBUG: setelah 3s belum ada konten MGID — kemungkinan MGID tidak menayangkan (verify/widget inactive/blocked).</p>";
+      }
+    },3000);
+  })(window,"_mgq");
+</script>
