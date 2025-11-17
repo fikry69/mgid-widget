@@ -5,32 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MGID Widget</title>
 
-  <!-- MGID loader -->
-  <script src="https://jsc.mgid.com/site/1063027.js" async></script>
+  <!-- MGID loader (site=1063028) -->
+  <script src="https://jsc.mgid.com/site/1063028.js" async></script>
 
   <style>
-    body { margin:0; padding:10px; font-family:Arial; background:#fff; }
-    .mg-box { width:100%; box-sizing:border-box; }
+    body {
+      margin: 0;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      box-sizing: border-box;
+    }
+    .mg-box {
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 
 <body>
+
   <div class="mg-box">
-    <div data-type="_mgwidget" data-widget-id="1892356"></div>
+
+    <!-- MGID Widget (1891872) -->
+    <div data-type="_mgwidget" data-widget-id="1891872"></div>
+
     <script>
       (function(w,q){
-        w[q]=w[q]||[];
+        w[q] = w[q] || [];
         w[q].push(["_mgc.load"]);
       })(window,"_mgq");
     </script>
   </div>
 
-  <!-- AUTO RESIZE SCRIPT -->
+  <!-- AUTO-RESIZE untuk iframe (Exblog/Blogger) -->
   <script>
-  setInterval(function(){
-      var h = document.body.scrollHeight;
-      parent.postMessage({ type:"mgidHeight", height:h }, "*");
-  }, 500);
+    // kirim tinggi ke parent (Exblog)
+    setInterval(function(){
+      try {
+        var h = document.body.scrollHeight;
+        parent.postMessage({ type: "mgidHeight", height: h }, "*");
+      } catch(e){}
+    }, 500);
   </script>
+
 </body>
 </html>
