@@ -1,19 +1,47 @@
-<div id="mg-debug" style="min-height:220px;border:1px dashed #ccc;padding:10px;">
-  <!-- MGID container -->
-  <div data-type="_mgwidget" data-widget-id="1892356"></div>
-</div>
-<script>
-  (function(w,q){
-    w[q]=w[q]||[];
-    w[q].push(["_mgc.load"]);
-    console.log("DEBUG: pushed _mgc.load to", q, " current queue:", w[q].slice(-5));
-    // show simple fallback after 3s
-    setTimeout(function(){
-      var el=document.getElementById('mg-debug');
-      if(el && el.innerText.trim().length===0){
-        el.style.border='2px solid #f00';
-        el.innerHTML += "<p style='color:#666'>DEBUG: setelah 3s belum ada konten MGID — kemungkinan MGID tidak menayangkan (verify/widget inactive/blocked).</p>";
-      }
-    },3000);
-  })(window,"_mgq");
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MGID Widget</title>
+
+  <!-- MGID loader (HEAD) -->
+  <script src="https://jsc.mgid.com/site/1063027.js" async></script>
+
+  <style>
+    :root{--container-max:900px}
+    body{margin:0;padding:24px;font-family:Arial,Helvetica,sans-serif;background:#fafafa;color:#111}
+    .container{max-width:var(--container-max);margin:0 auto}
+    h1{font-size:20px;margin:0 0 8px}
+    p.lead{margin:0 0 16px;color:#444}
+    .mg-box{width:100%;box-sizing:border-box;background:#fff;border:1px solid #e6e6e6;padding:12px;min-height:240px;display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
+    @media(min-width:1200px){.mg-box{min-height:360px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>MGID Widget Test Page</h1>
+    <p class="lead">Widget akan muncul di kotak di bawah ini jika MGID menayangkan unit untuk domain Anda.</p>
+
+    <div class="mg-box" id="mg-box">
+      <!-- MGID widget container (BODY) -->
+      <div data-type="_mgwidget" data-widget-id="1892356"></div>
+      <script>
+        (function(w,q){
+          w[q]=w[q]||[];
+          w[q].push(["_mgc.load"]);
+        })(window,"_mgq");
+      </script>
+    </div>
+
+    <p style="margin-top:14px;color:#666;font-size:13px">
+      Catatan: jika kotak di atas kosong, cek:
+      <ul style="margin:6px 0 0 20px;color:#666;font-size:13px">
+        <li>Pastikan domain Anda di-dashboard MGID sudah aktif & terverifikasi.</li>
+        <li>Matikan ekstensi pemblokir iklan saat testing (AdBlock/uBlock).</li>
+        <li>Smart widget hanya menayangkan pada halaman berisi konten artikel.</li>
+      </ul>
+    </p>
+  </div>
+</body>
+</html>
