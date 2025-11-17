@@ -5,43 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MGID Widget</title>
 
-  <!-- MGID loader (HEAD) -->
+  <!-- MGID loader -->
   <script src="https://jsc.mgid.com/site/1063027.js" async></script>
 
   <style>
-    :root{--container-max:900px}
-    body{margin:0;padding:24px;font-family:Arial,Helvetica,sans-serif;background:#fafafa;color:#111}
-    .container{max-width:var(--container-max);margin:0 auto}
-    h1{font-size:20px;margin:0 0 8px}
-    p.lead{margin:0 0 16px;color:#444}
-    .mg-box{width:100%;box-sizing:border-box;background:#fff;border:1px solid #e6e6e6;padding:12px;min-height:240px;display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
-    @media(min-width:1200px){.mg-box{min-height:360px}}
+    body { margin:0; padding:10px; font-family:Arial; background:#fff; }
+    .mg-box { width:100%; box-sizing:border-box; }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>MGID Widget Test Page</h1>
-    <p class="lead">Widget akan muncul di kotak di bawah ini jika MGID menayangkan unit untuk domain Anda.</p>
-
-    <div class="mg-box" id="mg-box">
-      <!-- MGID widget container (BODY) -->
-      <div data-type="_mgwidget" data-widget-id="1892356"></div>
-      <script>
-        (function(w,q){
-          w[q]=w[q]||[];
-          w[q].push(["_mgc.load"]);
-        })(window,"_mgq");
-      </script>
-    </div>
-
-    <p style="margin-top:14px;color:#666;font-size:13px">
-      Catatan: jika kotak di atas kosong, cek:
-      <ul style="margin:6px 0 0 20px;color:#666;font-size:13px">
-        <li>Pastikan domain Anda di-dashboard MGID sudah aktif & terverifikasi.</li>
-        <li>Matikan ekstensi pemblokir iklan saat testing (AdBlock/uBlock).</li>
-        <li>Smart widget hanya menayangkan pada halaman berisi konten artikel.</li>
-      </ul>
-    </p>
+  <div class="mg-box">
+    <div data-type="_mgwidget" data-widget-id="1892356"></div>
+    <script>
+      (function(w,q){
+        w[q]=w[q]||[];
+        w[q].push(["_mgc.load"]);
+      })(window,"_mgq");
+    </script>
   </div>
+
+  <!-- AUTO RESIZE SCRIPT -->
+  <script>
+  setInterval(function(){
+      var h = document.body.scrollHeight;
+      parent.postMessage({ type:"mgidHeight", height:h }, "*");
+  }, 500);
+  </script>
 </body>
 </html>
